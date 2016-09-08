@@ -1,0 +1,14 @@
+{
+  "name": "safaribot",
+  "version": "1.0.0",
+  "description": "A bot for learning through Safari",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Augie Schwer",
+  "license": "ISC",
+  "dependencies": {
+    "botkit": "^0.2.2"
+  }
+}
