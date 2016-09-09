@@ -20,8 +20,11 @@ controller.hears(['ping'], ['direct_message','direct_mention','mention'], functi
     bot.reply(message,'PONG');
 });
 
-controller.hears(['hello','hi'], ['direct_message','direct_mention','mention'], function(bot,message) {
+controller.on(['direct_message','direct_mention','mention'], function(bot,message) {
     bot.startConversation(message, function(err, convo) {
-        convo.say('Howdy!');
+        convo.ask('Howdy! What would you like to learn about?', function(response,convo) {
+            convo.say('Cool! '+ response.text + ' sounds interesting');
+            convo.next();
+        });
     });
 });
