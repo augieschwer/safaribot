@@ -16,11 +16,11 @@ bot.startRTM(function(err,bot,payload) {
                 }
 });
 
-controller.hears(['ping'], ['direct_message','direct_mention'], function(bot,message) {
+controller.hears(['ping'], ['direct_message','direct_mention','mention'], function(bot,message) {
     bot.reply(message,'PONG');
 });
 
-controller.hears(['hello','hi'], ['direct_message','direct_mention'], function(bot,message) {
+controller.hears(['hello','hi'], ['direct_message','direct_mention','mention'], function(bot,message) {
     bot.startConversation(message, function(err, convo) {
         convo.say('Howdy!');
     });
