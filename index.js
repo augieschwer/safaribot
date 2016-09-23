@@ -25,6 +25,29 @@ controller.on(['direct_message','direct_mention','mention'], function(bot,messag
         convo.ask('Howdy! What would you like to learn about?', function(response,convo) {
             convo.say('Cool! '+ response.text + ' sounds interesting');
             convo.say('Here is a link to some content about ' + response.text + ': https://www.safaribooksonline.com/search/?query=' + response.text);
+            convo.ask('Was that helpful?', [
+                {
+                    pattern: bot.utterances.yes,
+                    callback: function(response,convo) {
+                        convo.say('Great!');
+                        convo.next();
+                    }
+                },
+                {
+                    pattern: bot.utterances.no,
+                    callback: function(response,convo) {
+                        convo.say('Bummer...');
+                        convo.next();
+                    }
+                },
+                {
+                    default: true,
+                    callback: function(response,convo) {
+                        convo.repeat();
+                        convo.next();
+                    }
+                }
+            ]);
             convo.next();
         });
     });
