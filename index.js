@@ -24,6 +24,7 @@ controller.on(['direct_message','direct_mention','mention'], function(bot,messag
     bot.startConversation(message, function(err, convo) {
         convo.ask('Howdy! What would you like to learn about?', function(response,convo) {
             convo.say('Cool! '+ response.text + ' sounds interesting');
+            convo.say('Here is a link to some content about ' + response.text + ': https://www.safaribooksonline.com/search/?query=' + response.text);
             convo.next();
         });
     });
